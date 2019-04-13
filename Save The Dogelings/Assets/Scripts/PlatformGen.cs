@@ -41,6 +41,7 @@ public class PlatformGen : MonoBehaviour
 
     public float minY = 0.1f;
     public float maxY = 0.5f;
+    float platformXSpawnRange;
 
     int wichPlatformPrefab = 1;
     int randomBonus = 0;
@@ -66,7 +67,8 @@ public class PlatformGen : MonoBehaviour
 
     void Start()
     {
-        noRep = 0;
+        platformXSpawnRange = 2.35f;
+           noRep = 0;
         PlatformPrefabMaster = null;
         bonusPrefab = null;
         noRepFlyLeaf = false;
@@ -101,16 +103,16 @@ public class PlatformGen : MonoBehaviour
             oneOrTwoPlatforms = Random.Range(1, 4);
             randomRangeY = Random.Range(1.5f, 2f);
             spawnPosition.y = randomRangeY + transform.position.y;
-            spawnPosition.x = Random.Range(-2.75f, 2.75f);
+            spawnPosition.x = Random.Range(-platformXSpawnRange, platformXSpawnRange);
 
 
             if (spawnPosition.x <= 0f)
             {
-                spawnPosition.x = Random.Range(-2.75f, -0.75f);
+                spawnPosition.x = Random.Range(-platformXSpawnRange, -0.75f);
             }
             else
             {
-                spawnPosition.x = Random.Range(0.75f, 2.75f);
+                spawnPosition.x = Random.Range(0.75f, platformXSpawnRange);
             }
 
 
@@ -219,7 +221,7 @@ public class PlatformGen : MonoBehaviour
     {
         bonusLeftOrRightFor2P = Random.Range(1, 3);
 
-        spawnPosition.x = Random.Range(-2.75f, -0.75f);
+        spawnPosition.x = Random.Range(-platformXSpawnRange, -0.75f);
         Instantiate(PlatformPrefabMaster, spawnPosition, Quaternion.identity);
 
         if (randomBonus >= randomBonusMaxCounter && bonusLeftOrRightFor2P == 1)
@@ -242,7 +244,7 @@ public class PlatformGen : MonoBehaviour
 
         spawnPosition.y = spawnPosition.y + randomRangeYForDoubles;
 
-        spawnPosition.x = Random.Range(0.75f, 2.75f);
+        spawnPosition.x = Random.Range(0.75f, platformXSpawnRange);
 
         Instantiate(PlatformPrefabMaster, spawnPosition, Quaternion.identity);
 

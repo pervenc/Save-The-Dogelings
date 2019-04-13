@@ -10,7 +10,7 @@ using UnityEngine;
 public class DogeMovement : MonoBehaviour
 {
 
-    float maxPos = 2.7f;
+    float maxPos = 2.6f;
 
     Rigidbody2D rb;
     Vector3 accel = Vector3.zero;
