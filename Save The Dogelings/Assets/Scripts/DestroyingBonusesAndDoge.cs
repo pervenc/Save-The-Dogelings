@@ -8,7 +8,7 @@ public class DestroyingBonusesAndDoge : MonoBehaviour
     public GameObject Doge;
     public Rigidbody2D rb;
     public GameObject platformGen;
-    
+
 
     private void Start()
     {
@@ -27,9 +27,9 @@ public class DestroyingBonusesAndDoge : MonoBehaviour
 
 
         }
-        if (other.CompareTag("Doge")&&gameObject.tag !=("Spikes"))
+        if (other.CompareTag("Doge") && this.gameObject.tag != "Spikes")
         {
-            if (gameObject.tag==("FlyFlower"))
+            if (this.gameObject.tag == ("FlyFlower"))
             {
                 StartCoroutine(WaitABitToDestroy());
             }
@@ -44,7 +44,11 @@ public class DestroyingBonusesAndDoge : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
 
         }
-      
+        if (other.CompareTag("Spikes"))
+        {
+            gameObject.GetComponent<Destructor>().gameIsOver = true;
+
+        }
     }
 
 

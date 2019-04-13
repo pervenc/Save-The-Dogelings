@@ -6,11 +6,8 @@ public class Destructor : MonoBehaviour
 {
 
 
-    public GameObject DestructionPoint;
-    public GameObject Doge;
-    public Sprite mySprite;
-    public Rigidbody2D rb;
-    public bool gameIsOver;
+    GameObject DestructionPoint, Doge;
+    [HideInInspector] public bool gameIsOver;
 
     void Start()
     {
@@ -35,8 +32,6 @@ public class Destructor : MonoBehaviour
             if (this.gameObject.tag == ("Doge"))
             {
                 gameIsOver = true;
-                //enabled = false;
-
 
             }
             else

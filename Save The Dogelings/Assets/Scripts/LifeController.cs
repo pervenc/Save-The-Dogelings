@@ -94,17 +94,17 @@ public class LifeController : MonoBehaviour
 
         coinCount = scoreController.GetComponent<ScoreController>().coinScoreCount;
 
-        if (coinCount>9)
+        if (coinCount > 9)
         {
-            if (heartLifes<6)
+            if (heartLifes < 6)
             {
                 heartLifes++;
                 scoreController.GetComponent<ScoreController>().coinScoreCount = 0;
             }
-            else if (heartLifes==6)
+            else if (heartLifes == 6)
             {
                 coinCount = 10;
-            }  
+            }
         }
     }
 
@@ -113,20 +113,20 @@ public class LifeController : MonoBehaviour
     {
         if (other.CompareTag("Spikes"))
         {
-            if (heartLifes>=0 && graceTime==false && GetComponent<BonusItems>().isFlying == false)
+            if (heartLifes >= 0 && graceTime == false && GetComponent<BonusItems>().isFlying == false)
 
             {
                 StartCoroutine(LosingLifesNGraceTime());
             }
         }
-    
+
     }
 
     IEnumerator LosingLifesNGraceTime()
     {
         if (heartLifes == 0)
         {
-            GetComponent<Destructor>().gameIsOver = true;
+            gameObject.GetComponent<Destructor>().gameIsOver = true;
         }
 
         if (heartLifes > 0)
@@ -137,8 +137,8 @@ public class LifeController : MonoBehaviour
             graceTime = false;
         }
 
-       
-       
+
+
 
     }
 

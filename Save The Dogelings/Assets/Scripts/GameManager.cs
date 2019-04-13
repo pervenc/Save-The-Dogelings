@@ -12,27 +12,19 @@ public class GameManager : MonoBehaviour
     public Transform PlayerPosition;
     public GameObject GameOverPrefab;
 
-    public AudioSource MusicGame;
-    public AudioSource GameOverSound;
-    public AudioSource coinSound;
-    public AudioSource dogelingBarkSound;
-    public AudioSource dogeCry;
+        
+    public AudioSource MusicGame, GameOverSound, coinSound, dogelingBarkSound, dogeCry;
 
     public GameObject Doge;
     public GameObject bonesCanvas;
     public GameObject dogesHeadsCanvas;
 
-    public Text resumeText;
-    public Text restartText;
-    public Text mainMenuText;
-    public Text exitText;
-    public Text difficultText;
 
-    //int audioOnOff = 1;
+    public Text resumeText, restartText, mainMenuText, exitText, difficultText;
+
 
     bool paused = false;
     bool GamesRunning = true;
-    //bool gameIsOver = false;
 
     void Start()
     {
@@ -176,7 +168,6 @@ public class GameManager : MonoBehaviour
 
             }
 
-            // gameIsOver = true;
             StartCoroutine(StopDoge());
 
         }

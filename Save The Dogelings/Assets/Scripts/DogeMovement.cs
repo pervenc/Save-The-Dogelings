@@ -47,19 +47,20 @@ public class DogeMovement : MonoBehaviour
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -maxPos, maxPos), transform.position.y, transform.position.z);
 
-        if (GetComponent<Destructor>().gameIsOver == false)
+        if (gameObject.GetComponent<Destructor>().gameIsOver == false)
         {
 
             if (accel.x < -0.01f)
             {
 
-               GameObject.FindWithTag("Doge").GetComponent<SpriteRenderer>().flipX = true;
+                GameObject.FindWithTag("Doge").GetComponent<SpriteRenderer>().flipX = true;
+                GameObject.FindWithTag("Doge").GetComponent<SpriteRenderer>().flipX = true;
 
 
             }
             if (accel.x > 0.01f)
             {
-              GameObject.FindWithTag("Doge").GetComponent<SpriteRenderer>().flipX = false;
+                GameObject.FindWithTag("Doge").GetComponent<SpriteRenderer>().flipX = false;
 
             }
 
@@ -71,7 +72,6 @@ public class DogeMovement : MonoBehaviour
 
 
 
-        anim.SetBool("gameIsOver", GetComponent<Destructor>().gameIsOver);
 
         if (GetComponent<BonusItems>().isFlying == true)
         {
@@ -87,9 +87,20 @@ public class DogeMovement : MonoBehaviour
 
 
 
-        //Debug.Log(veloc.y);
+        anim.SetBool("gameIsOver", gameObject.GetComponent<Destructor>().gameIsOver);
 
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Spikes"))
+        {
+            gameObject.GetComponent<Destructor>().gameIsOver = true;
+            anim.SetBool("gameIsOver", true);
+
+        }
+    }
+
 
 
     IEnumerator FirstJump()
